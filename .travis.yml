@@ -10,7 +10,7 @@ env:
 before_install:
   - ruby --version
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
-  - gem install bundler -v '< 2'
+  - gem install bundler -v 1.17.3
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
   - chmod +x $CCTR
   - $CCTR before-build
