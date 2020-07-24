@@ -14,6 +14,7 @@ before_install:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
   - chmod +x $CCTR
   - $CCTR before-build
+  - gem update --system
 script:
   - bundle exec rake db:setup
   - bundle exec rake rspec
