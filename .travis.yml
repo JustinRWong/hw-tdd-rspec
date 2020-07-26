@@ -5,7 +5,7 @@ cache: bundler
 bundler_args: --without production
 env:
   global:
-    - CC_TEST_REPORTER_ID=000000000000000000000000000000000000000000000000000000000000
+    - CC_TEST_REPORTER_ID=bc3522c31226680d254991d9453696b344ff01336222f0fab32de2278dcf4dac
     - CCTR=/tmp/cc-test-reporter
 before_install:
   - ruby --version
