@@ -22,8 +22,8 @@ script:
   - bundle exec rake cucumber
 #   - $CCTR format-coverage -t simplecov -o coverage/codeclimate.$SUITE.json
 after_script:
-  - echo $CI_NODE_INDEX
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then $CCTR format-coverage -t simplecov -o ./coverage/codeclimate.$CI_NODE_INDEX.json ./coverage/spec/.resultset.json; fi
+  - $CCTR format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json # Format backend coverage
 #   - $CCTR sum-coverage coverage/codeclimate.*.json | $CCTR upload-coverage
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then $CCTR sum-coverage --output - --parts $CI_NODE_TOTAL coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --input -; fi
-  - $CCTR after-build --exit-code $TRAVIS_TEST_RESULT
+  - $CCTR sum-coverage coverage/codeclimate.*.json -p 2                  # Sum both coverage parts into coverage/codeclimate.json
+  - echo "$TRAVIS_TEST_RESULT"
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
