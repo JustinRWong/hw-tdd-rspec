@@ -26,4 +26,4 @@ after_script:
 #   - $CCTR sum-coverage coverage/codeclimate.*.json | $CCTR upload-coverage
   - $CCTR sum-coverage coverage/codeclimate.*.json -p 2                  # Sum both coverage parts into coverage/codeclimate.json
   - echo "$TRAVIS_TEST_RESULT"
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then $CCTR upload-coverage; fi  # Upload coverage/codeclimate.json
